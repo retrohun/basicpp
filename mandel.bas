@@ -1,0 +1,85 @@
+#if 0
+c++ -pipe -xc++ -fpermissive -w -o "${0%.*}".exe "$0" && ./"${0%.*}.exe" ; exit $?
+#endif
+#include "ptsvubas.cc"
+
+/* // original from: https://rosettacode.org/wiki/Mandelbrot_set#OS.2F8_BASIC
+// // converted by NASZVADI, Peter, 2017
+BEGINBASIC(int,main,(int argc, char* argv[]))
+//10 X1=59\Y1=21
+10 LET X1=59;
+11 LET Y1=21;
+//20 I1=-1.0\I2=1.0\R1=-2.0\R2=1.0
+20 LET I1=-1.0;
+21 LET I2=1.0;
+22 LET R1=-2.0;
+23 LET R2=1.0;
+//30 S1=(R2-R1)/X1\S2=(I2-I1)/Y1
+30 LET S1=(R2-R1)/X1;
+31 LET S2=(I2-I1)/Y1;
+//40 FOR Y=0 TO Y1
+40 LET Y=0;
+//50 I3=I1+S2*Y
+50 LET I3=I1+S2*Y;
+//60 FOR X=0 TO X1
+60 LET X=0;
+//70 R3=R1+S1*X\Z1=R3\Z2=I3
+70 LET R3=R1+S1*X;
+71 LET Z1=R3;
+72 LET Z2=I3;
+//80 FOR N=0 TO 30
+80 LET N=0;
+//90 A=Z1*Z1\B=Z2*Z2
+90 LET A=Z1*Z1;
+91 LET B=Z2*Z2;
+//100 IF A+B>4.0 GOTO 130
+100 IF A+B>4.0 THEN 130;
+//110 Z2=2*Z1*Z2+I3\Z1=A-B+R3
+110 LET Z2=2*Z1*Z2+I3;
+111 LET Z1=A-B+R3;
+//120 NEXT N
+120 LET N=N+1;
+121 IF N<=30 THEN 90;
+130 PRINT CHR$(62-N/2),CHR$(0);
+//140 NEXT X
+140 LET X=X+1;
+141 IF X<=X1 THEN 70;
+150 PRINT "";
+//160 NEXT Y
+160 LET Y=Y+1;
+161 IF Y<=Y1 THEN 50;
+170 END;
+ENDBASIC
+*/
+
+BEGINBASIC(int,main,(int argc, char* argv[]))
+10 LET X1=59;
+11 LET Y1=21;
+20 LET I1=-1.0;
+21 LET I2=1.0;
+22 LET R1=-2.0;
+23 LET R2=1.0;
+30 LET S1=(R2-R1)/X1;
+31 LET S2=(I2-I1)/Y1;
+40 LET Y=0;
+50 LET I3=I1+S2*Y;
+60 LET X=0;
+70 LET R3=R1+S1*X;
+71 LET Z1=R3;
+72 LET Z2=I3;
+80 LET N=0;
+90 LET A=Z1*Z1;
+91 LET B=Z2*Z2;
+100 IF A+B>4.0 THEN 130;
+110 LET Z2=2*Z1*Z2+I3;
+111 LET Z1=A-B+R3;
+120 LET N=N+1;
+121 IF N<=30 THEN 90;
+130 PRINT CHR$(62-N/2),CHR$(0);
+140 LET X=X+1;
+141 IF X<=X1 THEN 70;
+150 PRINT "";
+160 LET Y=Y+1;
+161 IF Y<=Y1 THEN 50;
+170 END;
+ENDBASIC
